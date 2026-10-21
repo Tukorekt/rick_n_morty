@@ -1,17 +1,11 @@
 # rick_n_morty
 
-A new Flutter project.
+Тестовый проект Рик и Морти
 
-## Getting Started
+Реализовано на Clean Arch + Bloc. Дизайн базовый.
+Стек: Freezed, Json, Equatable, get_it, dio, shared_preferences, flutter_bloc, auto_route, theme_tailor
 
-This project is a starting point for a Flutter application.
+Для запуска:
+--dart-define-from-file=env/base_env.json
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Проверял на Android
