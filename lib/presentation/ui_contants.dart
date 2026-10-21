@@ -18,3 +18,8 @@ const double spacing16 = 16;
 
 const int indexToPaginate = 4;
 const double fractionToPaginate = .5;
+
+const double defultImageSize = 200;
+const double miniImageSize = 100;
+
+const double cardElevation = 1;

@@ -23,9 +23,14 @@ class _CharactersListScreenState extends State<CharactersListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWithSearch(
-        onSearchTap: (isOpened) => setState(() {
-          _isSearchPerformed = isOpened;
-        }),
+        onSearchTap: (isOpened) {
+          setState(() {
+            _isSearchPerformed = isOpened;
+          });
+          if (_isSearchPerformed) {
+            _searchBloc.updateSearchValue('');
+          }
+        },
         isSearchperformed: _isSearchPerformed,
         onSearch: (String? value) {
           if (value == null) return;
@@ -33,14 +38,8 @@ class _CharactersListScreenState extends State<CharactersListScreen> {
         },
       ),
       body: _isSearchPerformed
-          ? CharactersListBody(
-              key: GlobalObjectKey('search_bloc'),
-              bloc: _searchBloc,
-            )
-          : CharactersListBody(
-              key: GlobalObjectKey('list_bloc'),
-              bloc: _listBloc,
-            ),
+          ? CharactersListBody(bloc: _searchBloc)
+          : CharactersListBody(bloc: _listBloc),
     );
   }
 }

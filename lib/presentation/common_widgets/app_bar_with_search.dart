@@ -43,6 +43,7 @@ class _AppBarWithSearchState extends State<AppBarWithSearch> {
                   contentPadding: EdgeInsets.symmetric(horizontal: padding8),
                 ),
                 onChanged: widget.onSearch,
+                autofocus: true,
               ),
             )
           : Text(

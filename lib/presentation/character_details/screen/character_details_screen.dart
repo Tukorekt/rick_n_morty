@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_n_morty/app/themes/app_theme.dart';
 import 'package:rick_n_morty/domain/entities/character.dart';
 import 'package:rick_n_morty/presentation/common_widgets/app_icon_button.dart';
+import 'package:rick_n_morty/presentation/common_widgets/app_image.dart';
 import 'package:rick_n_morty/presentation/ui_contants.dart';
 
 @RoutePage()
@@ -38,11 +38,7 @@ class CharacterDetailsScreen extends StatelessWidget {
               spacing: spacing16,
               children: [
                 if (character.image != null)
-                  CachedNetworkImage(
-                    imageUrl: character.image!,
-                    width: 200,
-                    height: 200,
-                  ),
+                  AppImage(url: character.image!, size: defultImageSize),
                 Text('Статус: ${character.status ?? ''}'),
                 Text('Вид: ${character.species ?? ''}'),
                 Text('Происхождение: ${character.origin?.name ?? ''}'),

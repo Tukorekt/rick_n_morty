@@ -17,7 +17,7 @@ class SearchCharactersCubit extends BaseCubit<SearchCharactersState> {
 
   @override
   Future<void> loadData([bool reset = false]) async {
-    if (state is Loading) return;
+    if (state is Loading && !reset) return;
 
     if (searchValue.isEmpty) {
       return emit(

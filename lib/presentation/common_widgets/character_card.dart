@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_n_morty/app/routing/router.gr.dart';
 import 'package:rick_n_morty/domain/entities/character.dart';
+import 'package:rick_n_morty/presentation/common_widgets/app_image.dart';
 import 'package:rick_n_morty/presentation/ui_contants.dart';
 
 class CharacterCard extends StatelessWidget {
@@ -12,11 +12,10 @@ class CharacterCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        context.router.push(CharacterDetailsRoute(character: character));
-      },
+      onTap: () =>
+          context.router.push(CharacterDetailsRoute(character: character)),
       child: Card(
-        elevation: 1,
+        elevation: cardElevation,
         color: Colors.white,
         child: Padding(
           padding: const EdgeInsetsGeometry.all(padding8),
@@ -24,11 +23,7 @@ class CharacterCard extends StatelessWidget {
             spacing: 4,
             children: [
               if (character.image != null)
-                CachedNetworkImage(
-                  imageUrl: character.image!,
-                  width: 100,
-                  height: 100,
-                ),
+                AppImage(url: character.image!, size: miniImageSize),
               Text(
                 character.name ?? '',
                 style: TextStyle(fontWeight: FontWeight.bold),
