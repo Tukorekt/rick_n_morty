@@ -1,3 +1,12 @@
+# Они должны быть здесь
+# env/base_env.json
+# .freezed.dart
+# .g.dart
+# .config.dart
+# .gr.dart
+# .tailor.dart
+
+
 # Miscellaneous
 *.class
 *.log
@@ -47,6 +56,5 @@ app.*.map.json
 # Widget Preview related
 .widget_preview/
 
-.env
-.freezed.dart
-.g.dart
+
+
