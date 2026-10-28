@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint, type=warning, deprecated_member_use, deprecated_member_use_from_same_package
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'base_response.dart';
+part of 'base_response_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -227,8 +227,8 @@ return $default(_that.info,_that.results);case _:
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
 
-class _BaseResponseModel<T> implements BaseResponseModel<T> {
-  const _BaseResponseModel({required this.info, required this.results});
+class _BaseResponseModel<T> extends BaseResponseModel<T> {
+  const _BaseResponseModel({required this.info, required this.results}): super._();
   factory _BaseResponseModel.fromJson(Map<String, dynamic> json,T Function(Object?) fromJsonT) => _$BaseResponseModelFromJson(json,fromJsonT);
 
 @override final  InfoModel? info;

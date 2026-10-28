@@ -9,7 +9,13 @@ const baseUrl = String.fromEnvironment('BASE_URL');
 @module
 abstract class RegisterModule {
   @lazySingleton
-  Dio get dio => Dio(BaseOptions(baseUrl: baseUrl));
+  Dio get dio => Dio(
+    BaseOptions(
+      baseUrl: baseUrl,
+      connectTimeout: Duration(seconds: 10),
+      receiveTimeout: Duration(seconds: 15),
+    ),
+  );
 
   @lazySingleton
   Connectivity get connectivity => Connectivity();

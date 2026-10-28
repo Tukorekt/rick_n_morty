@@ -28,7 +28,7 @@ abstract class CharacterModel with _$CharacterModel {
   factory CharacterModel.fromJson(Map<String, dynamic> json) =>
       _$CharacterModelFromJson(json);
 
-  Character toCharacter() => Character(
+  Character get toCharacter => Character(
     id: id,
     name: name,
     status: status,
@@ -38,8 +38,8 @@ abstract class CharacterModel with _$CharacterModel {
     image: image,
     url: url,
     created: created,
-    origin: originModel?.toOrigin(),
-    location: locationModel?.toLocation(),
+    origin: originModel?.toOrigin,
+    location: locationModel?.toLocation,
     episodesUrls: episodesUrls,
   );
 }

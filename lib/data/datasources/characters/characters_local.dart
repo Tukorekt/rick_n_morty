@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:rick_n_morty/common/errors/exceptions.dart';
 import 'package:rick_n_morty/data/datasources/base_interfaces.dart';
-import 'package:rick_n_morty/data/datasources/data_converter_mixin.dart';
 import 'package:rick_n_morty/data/models/character/character_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -11,7 +10,7 @@ abstract interface class ICharactersLocal
     implements BaseLocalInterface<CharacterModel>;
 
 @LazySingleton(as: ICharactersLocal)
-class CharactersLocalImpl with ConverterMixin implements ICharactersLocal {
+class CharactersLocalImpl implements ICharactersLocal {
   static const _key = 'cached_characters';
 
   final SharedPreferences prefs;
@@ -32,7 +31,9 @@ class CharactersLocalImpl with ConverterMixin implements ICharactersLocal {
   }
 
   @override
-  Future<void> setCachedModels(List<CharacterModel> models) async {
+  Future<void> setCachedModels(List<CharacterModel>? models) async {
+    if (models == null) return;
+
     final list = models.map((e) => jsonEncode(e.toJson()));
     await prefs.setStringList(_key, list.toList());
   }

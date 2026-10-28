@@ -14,5 +14,5 @@ abstract class OriginModel with _$OriginModel {
   factory OriginModel.fromJson(Map<String, dynamic> json) =>
       _$OriginModelFromJson(json);
 
-  Origin toOrigin() => Origin(name: name, url: url);
+  Origin get toOrigin => Origin(name: name, url: url);
 }

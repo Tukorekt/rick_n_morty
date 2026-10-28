@@ -20,6 +20,8 @@ sealed class BaseCubitState<T extends SuccessState> with _$BaseCubitState<T> {
   factory BaseCubitState.init({int? timeStamp}) = Init<T>;
 }
 
-abstract interface class SuccessState<T> {
+abstract class SuccessState<T> {
   List<T> get contentList;
+
+  const SuccessState();
 }

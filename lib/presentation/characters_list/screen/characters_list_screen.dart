@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:rick_n_morty/app/di/injector.dart';
+import 'package:rick_n_morty/common/blocs/base_bloc/base_cubit.dart';
+import 'package:rick_n_morty/common/blocs/base_bloc/base_cubit_state.dart';
+import 'package:rick_n_morty/domain/entities/character.dart';
 import 'package:rick_n_morty/presentation/characters_list/bloc/characters_list_cubit.dart';
 import 'package:rick_n_morty/presentation/common_widgets/app_bar_with_search.dart';
 import 'package:rick_n_morty/presentation/common_widgets/characters_list_body.dart';
@@ -28,18 +31,25 @@ class _CharactersListScreenState extends State<CharactersListScreen> {
             _isSearchPerformed = isOpened;
           });
           if (_isSearchPerformed) {
-            _searchBloc.updateSearchValue('');
+            _searchBloc.clearSearchValue();
           }
         },
         isSearchperformed: _isSearchPerformed,
-        onSearch: (String? value) {
-          if (value == null) return;
-          _searchBloc.updateSearchValue(value);
-        },
+        onSearch: _onSearchPerformed,
       ),
-      body: _isSearchPerformed
-          ? CharactersListBody(bloc: _searchBloc)
-          : CharactersListBody(bloc: _listBloc),
+      body:
+          CharactersListBody<
+            SuccessState<Character>,
+            BaseCubit<SuccessState<Character>>
+          >(
+            key: ValueKey('list'),
+            bloc: _isSearchPerformed ? _searchBloc : _listBloc,
+          ),
     );
+  }
+
+  void _onSearchPerformed(String? value) {
+    if (value == null) return;
+    _searchBloc.updateSearchValue(value);
   }
 }

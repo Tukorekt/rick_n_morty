@@ -23,15 +23,25 @@ class _CharactersListBodyState<
   C extends BaseCubit<S>
 >
     extends State<CharactersListBody<S, C>> {
+  List<Character> _contentList = [];
+
   @override
   void initState() {
     super.initState();
     _loadValues();
   }
 
-  void _loadValues() => widget.bloc.loadData();
+  @override
+  void didUpdateWidget(covariant CharactersListBody<S, C> oldWidget) {
+    super.didUpdateWidget(oldWidget);
 
-  List<Character> _contentList = [];
+    if (oldWidget.bloc == widget.bloc) return;
+
+    final state = widget.bloc.state;
+    _contentList = state is Success<S> ? state.state.contentList : [];
+
+    if (state is Init) _loadValues();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -57,4 +67,6 @@ class _CharactersListBodyState<
       },
     );
   }
+
+  void _loadValues() => widget.bloc.loadData();
 }

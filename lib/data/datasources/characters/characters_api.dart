@@ -1,49 +1,47 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:rick_n_morty/common/typedefs.dart';
 import 'package:rick_n_morty/data/datasources/data_converter_mixin.dart';
-import 'package:rick_n_morty/data/models/base_response/base_response.dart';
+import 'package:rick_n_morty/data/models/base_response/base_response_model.dart';
 import 'package:rick_n_morty/data/models/character/character_model.dart';
 
+typedef CharactersModelResponse = BaseResponseModel<List<CharacterModel>>;
+
 abstract interface class ICharactersApi {
-  Future<List<CharacterModel>> getCharacters(int page);
-  Future<List<CharacterModel>> searchCharacters((String name, int page) params);
+  Future<CharactersModelResponse> getCharacters(int page);
+  Future<CharactersModelResponse> searchCharacters(
+    (String name, int page) params,
+  );
 }
 
 @LazySingleton(as: ICharactersApi)
 class CharactersApiImpl
-    with ConverterMixin, BaseResponseMixin
+    with ConverterMixin<List<CharacterModel>>
     implements ICharactersApi {
   final Dio dio;
 
   const CharactersApiImpl(this.dio);
 
-  BaseResponseModel<List<CharacterModel>> _convertFromResponse(
-    dynamic jsonList,
-  ) => BaseResponseModel<List<CharacterModel>>.fromJson(
-    jsonList,
-    (v) => (v as List<dynamic>).map((e) => CharacterModel.fromJson(e)).toList(),
+  @override
+  Future<CharactersModelResponse> getCharacters(int page) => handleResponse(
+    () => dio.get('/character/', queryParameters: {'page': page}),
   );
 
   @override
-  Future<List<CharacterModel>> getCharacters(int page) async {
-    final result = await handleResponse(
-      () => dio.get('/character/', queryParameters: {'page': page}),
-      _convertFromResponse,
-    );
-
-    return result.results ?? <CharacterModel>[];
-  }
+  Future<CharactersModelResponse> searchCharacters((String, int) params) =>
+      handleResponse(
+        () => dio.get(
+          '/character/',
+          queryParameters: {'page': params.$2, 'name': params.$1},
+        ),
+      );
 
   @override
-  Future<List<CharacterModel>> searchCharacters((String, int) params) async {
-    final result = await handleResponse(
-      () => dio.get(
-        '/character/',
-        queryParameters: {'page': params.$2, 'name': params.$1},
-      ),
-      _convertFromResponse,
-    );
-
-    return result.results ?? <CharacterModel>[];
-  }
+  BaseResponseModel<List<CharacterModel>> responseToModel(JSON json) =>
+      BaseResponseModel<List<CharacterModel>>.fromJson(
+        json,
+        (v) => (v as List<dynamic>)
+            .map((e) => CharacterModel.fromJson(e))
+            .toList(),
+      );
 }

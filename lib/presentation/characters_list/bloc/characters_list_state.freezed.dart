@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CharactersListState {
 
- List<Character> get characters;
+ List<Character> get characters; Info? get info;
 /// Create a copy of CharactersListState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $CharactersListStateCopyWith<CharactersListState> get copyWith => _$CharactersLi
 @override
 bool operator ==(Object other) {
   final _this = this as CharactersListState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CharactersListState&&const DeepCollectionEquality().equals(other.characters, _this.characters));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CharactersListState&&const DeepCollectionEquality().equals(other.characters, _this.characters)&&(identical(other.info, _this.info) || other.info == _this.info));
 }
 
 
 @override
 int get hashCode {
   final _this = this as CharactersListState;
-  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.characters));
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.characters),_this.info);
 }
 
 @override
 String toString() {
   final _this = this as CharactersListState;
-  return 'CharactersListState(characters: ${_this.characters})';
+  return 'CharactersListState(characters: ${_this.characters}, info: ${_this.info})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $CharactersListStateCopyWith<$Res>  {
   factory $CharactersListStateCopyWith(CharactersListState value, $Res Function(CharactersListState) _then) = _$CharactersListStateCopyWithImpl;
 @useResult
 $Res call({
- List<Character> characters
+ List<Character> characters, Info? info
 });
 
 
@@ -68,10 +68,11 @@ class _$CharactersListStateCopyWithImpl<$Res>
 
 /// Create a copy of CharactersListState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? characters = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? characters = null,Object? info = freezed,}) {
   return _then(CharactersListState(
 characters: null == characters ? _self.characters : characters // ignore: cast_nullable_to_non_nullable
-as List<Character>,
+as List<Character>,info: freezed == info ? _self.info : info // ignore: cast_nullable_to_non_nullable
+as Info?,
   ));
 }
 
@@ -156,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Character> characters)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Character> characters,  Info? info)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CharactersListState() when $default != null:
-return $default(_that.characters);case _:
+return $default(_that.characters,_that.info);case _:
   return orElse();
 
 }
@@ -177,10 +178,10 @@ return $default(_that.characters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Character> characters)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Character> characters,  Info? info)  $default,) {final _that = this;
 switch (_that) {
 case _CharactersListState():
-return $default(_that.characters);case _:
+return $default(_that.characters,_that.info);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +198,10 @@ return $default(_that.characters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Character> characters)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Character> characters,  Info? info)?  $default,) {final _that = this;
 switch (_that) {
 case _CharactersListState() when $default != null:
-return $default(_that.characters);case _:
+return $default(_that.characters,_that.info);case _:
   return null;
 
 }
@@ -212,7 +213,7 @@ return $default(_that.characters);case _:
 
 
 class _CharactersListState extends CharactersListState {
-   _CharactersListState({ List<Character> characters = const <Character>[]}): _characters = characters,super._();
+   _CharactersListState({ List<Character> characters = const <Character>[], this.info}): _characters = characters,super._();
   
 
  final  List<Character> _characters;
@@ -222,6 +223,7 @@ class _CharactersListState extends CharactersListState {
   return EqualUnmodifiableListView(_characters);
 }
 
+@override final  Info? info;
 
 /// Create a copy of CharactersListState
 /// with the given fields replaced by the non-null parameter values.
@@ -233,18 +235,18 @@ _$CharactersListStateCopyWith<_CharactersListState> get copyWith => __$Character
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CharactersListState&&const DeepCollectionEquality().equals(other.characters, _characters));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CharactersListState&&const DeepCollectionEquality().equals(other.characters, _characters)&&(identical(other.info, info) || other.info == info));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_characters));
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_characters),info);
 }
 
 @override
 String toString() {
-    return 'CharactersListState(characters: $characters)';
+    return 'CharactersListState(characters: $characters, info: $info)';
 }
 
 
@@ -255,7 +257,7 @@ abstract mixin class _$CharactersListStateCopyWith<$Res> implements $CharactersL
   factory _$CharactersListStateCopyWith(_CharactersListState value, $Res Function(_CharactersListState) _then) = __$CharactersListStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<Character> characters
+ List<Character> characters, Info? info
 });
 
 
@@ -272,10 +274,11 @@ class __$CharactersListStateCopyWithImpl<$Res>
 
 /// Create a copy of CharactersListState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? characters = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? characters = null,Object? info = freezed,}) {
   return _then(_CharactersListState(
 characters: null == characters ? _self._characters : characters // ignore: cast_nullable_to_non_nullable
-as List<Character>,
+as List<Character>,info: freezed == info ? _self.info : info // ignore: cast_nullable_to_non_nullable
+as Info?,
   ));
 }
 

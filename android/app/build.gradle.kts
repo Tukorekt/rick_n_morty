@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.rick_n_morty"
+    namespace = "com.tuko7.rick_n_morty"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 

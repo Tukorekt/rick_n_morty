@@ -21,7 +21,7 @@ sealed class LocationModel with _$LocationModel {
   factory LocationModel.fromJson(Map<String, dynamic> json) =>
       _$LocationModelFromJson(json);
 
-  Location toLocation() => Location(
+  Location get toLocation => Location(
     id: id,
     name: name,
     type: type,

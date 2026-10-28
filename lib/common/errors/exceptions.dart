@@ -1,6 +1,9 @@
 sealed class AppException implements Exception {
   final String message;
   const AppException(this.message);
+
+  static AppException fromException(Exception e) =>
+      e is AppException ? e : UnexpecredExeption(e);
 }
 
 class ConvertionException extends AppException {
@@ -18,4 +21,8 @@ class HandledDioException extends AppException {
 
 class CacheException extends AppException {
   CacheException(String message, Type type) : super('$message, type: $type');
+}
+
+class UnexpecredExeption extends AppException {
+  UnexpecredExeption(Exception e) : super('Unexpected exeption: $e');
 }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SearchCharactersState {
 
- List<Character> get characters;
+ List<Character> get characters; Info? get info; String get searchValue;
 /// Create a copy of SearchCharactersState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,20 +27,20 @@ $SearchCharactersStateCopyWith<SearchCharactersState> get copyWith => _$SearchCh
 @override
 bool operator ==(Object other) {
   final _this = this as SearchCharactersState;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchCharactersState&&const DeepCollectionEquality().equals(other.characters, _this.characters));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SearchCharactersState&&const DeepCollectionEquality().equals(other.characters, _this.characters)&&(identical(other.info, _this.info) || other.info == _this.info)&&(identical(other.searchValue, _this.searchValue) || other.searchValue == _this.searchValue));
 }
 
 
 @override
 int get hashCode {
   final _this = this as SearchCharactersState;
-  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.characters));
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.characters),_this.info,_this.searchValue);
 }
 
 @override
 String toString() {
   final _this = this as SearchCharactersState;
-  return 'SearchCharactersState(characters: ${_this.characters})';
+  return 'SearchCharactersState(characters: ${_this.characters}, info: ${_this.info}, searchValue: ${_this.searchValue})';
 }
 
 
@@ -51,7 +51,7 @@ abstract mixin class $SearchCharactersStateCopyWith<$Res>  {
   factory $SearchCharactersStateCopyWith(SearchCharactersState value, $Res Function(SearchCharactersState) _then) = _$SearchCharactersStateCopyWithImpl;
 @useResult
 $Res call({
- List<Character> characters
+ List<Character> characters, Info? info, String searchValue
 });
 
 
@@ -68,10 +68,12 @@ class _$SearchCharactersStateCopyWithImpl<$Res>
 
 /// Create a copy of SearchCharactersState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? characters = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? characters = null,Object? info = freezed,Object? searchValue = null,}) {
   return _then(SearchCharactersState(
 characters: null == characters ? _self.characters : characters // ignore: cast_nullable_to_non_nullable
-as List<Character>,
+as List<Character>,info: freezed == info ? _self.info : info // ignore: cast_nullable_to_non_nullable
+as Info?,searchValue: null == searchValue ? _self.searchValue : searchValue // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -156,10 +158,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Character> characters)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Character> characters,  Info? info,  String searchValue)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SearchCharactersState() when $default != null:
-return $default(_that.characters);case _:
+return $default(_that.characters,_that.info,_that.searchValue);case _:
   return orElse();
 
 }
@@ -177,10 +179,10 @@ return $default(_that.characters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Character> characters)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Character> characters,  Info? info,  String searchValue)  $default,) {final _that = this;
 switch (_that) {
 case _SearchCharactersState():
-return $default(_that.characters);case _:
+return $default(_that.characters,_that.info,_that.searchValue);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +199,10 @@ return $default(_that.characters);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Character> characters)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Character> characters,  Info? info,  String searchValue)?  $default,) {final _that = this;
 switch (_that) {
 case _SearchCharactersState() when $default != null:
-return $default(_that.characters);case _:
+return $default(_that.characters,_that.info,_that.searchValue);case _:
   return null;
 
 }
@@ -212,7 +214,7 @@ return $default(_that.characters);case _:
 
 
 class _SearchCharactersState extends SearchCharactersState {
-   _SearchCharactersState({ List<Character> characters = const <Character>[]}): _characters = characters,super._();
+   _SearchCharactersState({ List<Character> characters = const <Character>[], this.info, this.searchValue = ''}): _characters = characters,super._();
   
 
  final  List<Character> _characters;
@@ -222,6 +224,8 @@ class _SearchCharactersState extends SearchCharactersState {
   return EqualUnmodifiableListView(_characters);
 }
 
+@override final  Info? info;
+@override@JsonKey() final  String searchValue;
 
 /// Create a copy of SearchCharactersState
 /// with the given fields replaced by the non-null parameter values.
@@ -233,18 +237,18 @@ _$SearchCharactersStateCopyWith<_SearchCharactersState> get copyWith => __$Searc
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SearchCharactersState&&const DeepCollectionEquality().equals(other.characters, _characters));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _SearchCharactersState&&const DeepCollectionEquality().equals(other.characters, _characters)&&(identical(other.info, info) || other.info == info)&&(identical(other.searchValue, searchValue) || other.searchValue == searchValue));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_characters));
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_characters),info,searchValue);
 }
 
 @override
 String toString() {
-    return 'SearchCharactersState(characters: $characters)';
+    return 'SearchCharactersState(characters: $characters, info: $info, searchValue: $searchValue)';
 }
 
 
@@ -255,7 +259,7 @@ abstract mixin class _$SearchCharactersStateCopyWith<$Res> implements $SearchCha
   factory _$SearchCharactersStateCopyWith(_SearchCharactersState value, $Res Function(_SearchCharactersState) _then) = __$SearchCharactersStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<Character> characters
+ List<Character> characters, Info? info, String searchValue
 });
 
 
@@ -272,10 +276,12 @@ class __$SearchCharactersStateCopyWithImpl<$Res>
 
 /// Create a copy of SearchCharactersState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? characters = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? characters = null,Object? info = freezed,Object? searchValue = null,}) {
   return _then(_SearchCharactersState(
 characters: null == characters ? _self._characters : characters // ignore: cast_nullable_to_non_nullable
-as List<Character>,
+as List<Character>,info: freezed == info ? _self.info : info // ignore: cast_nullable_to_non_nullable
+as Info?,searchValue: null == searchValue ? _self.searchValue : searchValue // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
