@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:theme_tailor_annotation/theme_tailor_annotation.dart';
+import 'package:theme_extensions_builder_annotation/theme_extensions_builder_annotation.dart';
 
-part 'app_theme.tailor.dart';
+part 'app_theme.g.theme.dart';
 
-@TailorMixin()
-class AppTheme extends ThemeExtension<AppTheme> with _$AppThemeTailorMixin {
-  @override
+@ThemeExtensions()
+class AppTheme extends ThemeExtension<AppTheme> with _$AppTheme {
   final Color appBarColor;
-  @override
   final TextStyle appBarTitleTextStyle;
-  @override
   final Color appBarIconsColor;
 
   const AppTheme({
