@@ -16,12 +16,12 @@ class CharactersListCubit extends BaseCubit<CharactersListState> {
   Future<void> loadData() async {
     if (state is Loading) return;
 
-    emit(BaseCubitState.loading());
-
     CharactersListState? successState;
     if (state is Success<CharactersListState>) {
       successState = (state as Success<CharactersListState>).state;
     }
+
+    emit(BaseCubitState.loading());
 
     final nextLastChar = successState?.info?.next.lastChar;
     final loadedChars = successState?.contentList;

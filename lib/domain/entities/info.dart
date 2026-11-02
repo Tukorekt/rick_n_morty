@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class Info extends Equatable {
-  final int? count, pages;
-  final String? next, prev;
-
-  const Info({this.count, this.next, this.pages, this.prev});
-
+base class const Info({
+  final int? count,
+  final int? pages,
+  final String? next,
+  final String? prev,
+}) extends Equatable {
   @override
   List<Object?> get props => [count, next, pages, prev];
 }

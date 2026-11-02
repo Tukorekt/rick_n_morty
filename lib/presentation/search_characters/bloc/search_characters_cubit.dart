@@ -28,12 +28,12 @@ class SearchCharactersCubit extends BaseCubit<SearchCharactersState> {
       );
     }
 
-    emit(BaseCubitState.loading());
-
     SearchCharactersState? successState;
     if (state is Success<SearchCharactersState> && !reset) {
       successState = (state as Success<SearchCharactersState>).state;
     }
+
+    emit(BaseCubitState.loading());
 
     final nextLastChar = successState?.info?.next.lastChar;
     final loadedChars = successState?.contentList;

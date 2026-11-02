@@ -119,10 +119,7 @@ return $default(_that);case _:
 final _that = this;
 switch (_that) {
 case _BaseEntity():
-return $default(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return $default(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -181,10 +178,7 @@ return $default(_that.exception,_that.entity);case _:
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( AppException? exception,  T? entity)  $default,) {final _that = this;
 switch (_that) {
 case _BaseEntity():
-return $default(_that.exception,_that.entity);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return $default(_that.exception,_that.entity);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
