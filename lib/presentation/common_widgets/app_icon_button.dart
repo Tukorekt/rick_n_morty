@@ -5,6 +5,7 @@ class AppIconButton extends StatelessWidget {
   final VoidCallback onTap;
   final IconData icon;
   final Color iconColor;
+
   const AppIconButton({
     super.key,
     required this.onTap,
@@ -14,12 +15,16 @@ class AppIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: border16,
-      child: Padding(
-        padding: const EdgeInsetsGeometry.all(padding4),
-        child: Icon(icon, size: iconSize, color: iconColor),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 2),
+      child: InkWell(
+        onTap: onTap,
+        customBorder: const CircleBorder(),
+        child: Container(
+          padding: const EdgeInsets.all(padding8),
+          decoration: BoxDecoration(shape: BoxShape.circle),
+          child: Icon(icon, size: iconSize, color: iconColor),
+        ),
       ),
     );
   }

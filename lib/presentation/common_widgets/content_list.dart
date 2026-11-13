@@ -7,6 +7,7 @@ class ContentList<T> extends StatefulWidget {
   final Widget Function(T item) itemBuilder;
   final int indexToLoad;
   final VoidCallback load;
+  final EdgeInsetsGeometry padding;
 
   const ContentList({
     super.key,
@@ -14,6 +15,7 @@ class ContentList<T> extends StatefulWidget {
     required this.load,
     required this.itemBuilder,
     this.indexToLoad = indexToPaginate,
+    this.padding = EdgeInsets.zero,
   });
 
   @override
@@ -25,6 +27,7 @@ class _ContentListState<T> extends State<ContentList<T>> {
   Widget build(BuildContext context) {
     return ListView.builder(
       physics: BouncingScrollPhysics(),
+      padding: widget.padding,
       itemCount: widget.content.length,
       itemBuilder: (_, index) {
         final item = widget.content[index];
