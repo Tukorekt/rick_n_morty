@@ -11,7 +11,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:flutter/material.dart' as _i3;
+import 'package:material_ui/material_ui.dart' as _i3;
 import 'package:rick_n_morty/domain/entities/character.dart' as _i4;
 import 'package:rick_n_morty/presentation/character_details/screen/character_details_screen.dart'
     as _i1;

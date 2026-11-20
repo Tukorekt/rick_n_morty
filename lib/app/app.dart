@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:rick_n_morty/app/routing/router.dart';
 import 'package:rick_n_morty/app/themes/app_theme.dart';
 import 'package:rick_n_morty/presentation/ui_contants.dart';

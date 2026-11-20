@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:rick_n_morty/app/di/injector.dart';
 import 'package:rick_n_morty/common/blocs/base_bloc/base_cubit.dart';
 import 'package:rick_n_morty/common/blocs/base_bloc/base_cubit_state.dart';

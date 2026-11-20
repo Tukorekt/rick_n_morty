@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:rick_n_morty/app/themes/app_theme.dart';
 import 'package:rick_n_morty/domain/entities/character.dart';
 import 'package:rick_n_morty/presentation/common_widgets/app_icon_button.dart';
